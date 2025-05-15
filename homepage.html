@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shafiya | Portfolio</title>
+  <button class="mode-toggle">🌙</button>
+  
+  
+  <style>
+    /* Default Light Mode */
+body {
+  background-color: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+header, footer, section {
+  transition: all 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #111;
+  color: #fff;
+}
+
+body.dark-mode header,
+body.dark-mode footer,
+body.dark-mode section {
+  background-color: #0c0c0c;
+  color: #fff;
+}
+
+/* Button to toggle Dark/Light Mode */
+.mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #00d4ff;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 100;
+  transition: background-color 0.3s ease;
+}
+
+.mode-toggle:hover {
+  background-color: #00aacc;
+}
+
+body.dark-mode .mode-toggle {
+  background-color: #0a0a0a;
+  color: #fff;
+}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    
+
+    body {
+      overflow-x: hidden;
+      color: white;
+      position: relative;
+    }
+
+    /* Background animation */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #0f2027);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .home {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      width: 100%;
+      gap: 2rem;
+    }
+
+    .text-content {
+      max-width: 600px;
+    }
+
+    .text-content h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .text-content h1 span {
+      color: #00d4ff;
+    }
+
+    .text-content h2 {
+      font-size: 1.8rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+
+    .text-content p {
+      font-size: 1.1rem;
+      color: #aaa;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.5rem;
+      background-color: #00d4ff;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #00aacc;
+    }
+
+    .image-content img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #00d4ff;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .image-content img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    /* About Section */
+    #about {
+      padding: 4rem 2rem;
+      background-color: #111;
+      text-align: center;
+    }
+
+    #about h2 {
+      font-size: 2.5rem;
+      color: #00d4ff;
+      margin-bottom: 1.5rem;
+    }
+
+    #about p {
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    #about h3 {
+      font-size: 2rem;
+      color: #00d4ff;
+      margin-bottom: 1.5rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .skill {
+      background-color: #1a1a1a;
+      border: 1px solid #00d4ff;
+      border-radius: 8px;
+      padding: 1.2rem;
+      width: 280px;
+      color: #fff;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .skill h4 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .skill:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    }
+
+    /* Contact Section */
+    #contact {
+      background-color: #111;
+      padding: 4rem 2rem;
+      color: white;
+    }
+
+    #contact h2 {
+      text-align: center;
+      color: #00d4ff;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    #contact p {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: #ccc;
+    }
+
+    #contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    #contact input,
+    #contact textarea {
+      padding: 0.8rem;
+      border-radius: 5px;
+      border: none;
+      background: #1a1a1a;
+      color: white;
+    }
+
+    #contact button {
+      padding: 0.8rem 1.5rem;
+      background-color: #00d4ff;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #contact button:hover {
+      background-color: #00aacc;
+    }
+
+    /* Portfolio Section */
+    #projects {
+      background-color: #111;
+      padding: 4rem 2rem;
+      color: white;
+    }
+
+    #projects h2 {
+      text-align: center;
+      color: #00d4ff;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    #projects h3 {
+      color: #00d4ff;
+      margin-bottom: 1rem;
+    }
+
+    .project-card {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 1.5rem;
+      flex: 1;
+      min-width: 280px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05); /* Slightly enlarges the card */
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.7); /* Adds glowing effect */
+      background-color: #2a2a2a; /* Darker background on hover */
+    }
+
+    .project-card h4,
+    .project-card p,
+    .project-card a {
+      transition: color 0.3s ease;
+    }
+
+    .project-card:hover h4,
+    .project-card:hover p,
+    .project-card:hover a {
+      color: #00d4ff; /* Changes text color to the theme color on hover */
+    }
+
+    .project-card a:hover {
+      text-decoration: underline; /* Underline effect on links */
+    }
+
+    .projects-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+
+  </style>
+</head>
+<body>
+
+  <section class="home" id="home">
+    <div class="container">
+      <div class="text-content">
+        <h1>Hi, I'm <span>Shafiya</span></h1>
+        <h2>Web Developer & AI Enthusiast</h2>
+        <p>Creating smart solutions using AI and Web Technologies</p>
+        <a href="#contact" class="btn">Contact Me</a>
+      </div>
+      <div class="image-content">
+        <img src="ani" alt="Shafiya" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a passionate B.Tech student at QIS College of Engineering and Technology, currently exploring the world of web development and artificial intelligence. I enjoy building web applications that solve real-world problems and bring ideas to life through clean code and creative design.</p>
+
+    <h3>Skills</h3>
+    <div class="skills">
+      <div class="skill">
+        <h4>HTML</h4>
+        <p>Expert in building structured, semantic websites with HTML5, ensuring accessibility and SEO best practices.</p>
+      </div>
+      <div class="skill">
+        <h4>CSS</h4>
+        <p>Proficient in CSS3 for creating responsive, mobile-first designs using Flexbox, Grid, and animations.</p>
+      </div>
+      <div class="skill">
+        <h4>JavaScript</h4>
+        <p>Experienced with JavaScript for building interactive websites, including DOM manipulation, event handling, and AJAX.</p>
+      </div>
+      <div class="skill">
+        <h4>Python</h4>
+        <p>Skilled in Python, particularly in data analysis, web scraping, and basic AI/ML applications using libraries like Pandas and TensorFlow.</p>
+      </div>
+      <div class="skill">
+        <h4>AI/ML Basics</h4>
+        <p>Understanding of AI and Machine Learning principles, including model training, data preprocessing, and using frameworks like Scikit-Learn and TensorFlow.</p>
+      </div>
+      <div class="skill">
+        <h4>React</h4>
+        <p>Basic experience with React for building dynamic and single-page web applications.</p>
+      </div>
+      <div class="skill">
+        <h4>Node.js</h4>
+        <p>Experience with Node.js for building backend applications, RESTful APIs, and integrating with databases.</p>
+      </div>
+      <div class="skill">
+        <h4>Git & GitHub</h4>
+        <p>Proficient in version control using Git, collaborating on GitHub, and understanding branching, merging, and pull requests.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects / Portfolio Section -->
+  <section id="projects">
+    <h2>My Projects</h2>
+
+    <!-- Web Development Projects -->
+    <div style="margin-bottom: 3rem;">
+      <h3>Web Development</h3>
+      <div class="projects-wrapper">
+        
+        <div class="project-card">
+          <h4>Event Management Website</h4>
+          <p>A responsive website for managing events like marriages and parties with animated image sliders.</p>
+          <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+          <a href="https://live-demo-link.com" target="_blank">Live Demo</a> |
+          <a href="https://github.com/yourname/event-website" target="_blank">Source Code</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- AI / ML Projects -->
+    <div style="margin-bottom: 3rem;">
+      <h3>AI / ML</h3>
+      <div class="projects-wrapper">
+        
+        <div class="project-card">
+          <h4>Emotion-Based Music Recommendation</h4>
+          <p>An AI system that recommends music based on facial emotion detection using OpenCV and a trained model.</p>
+          <p><strong>Technologies:</strong> Python, AI/ML, OpenCV</p>
+          <a href="https://github.com/yourname/emotion-music-recommendation" target="_blank">Source Code</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cybersecurity Projects -->
+    <div>
+      <h3>Cybersecurity</h3>
+      <div class="projects-wrapper">
+        
+        <div class="project-card">
+          <h4>ATM Background Processing System</h4>
+          <p>A backend simulator for secure ATM processing with login, balance checks, and fraud detection basics.</p>
+          <p><strong>Technologies:</strong> Python, JavaScript, AI Concepts</p>
+          <a href="https://github.com/yourname/atm-system" target="_blank">Source Code</a>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+  <!-- Resume Section -->
+<section id="resume" style="background-color: #111; padding: 4rem 2rem; color: white;">
+    <h2 style="text-align: center; color: #00d4ff; font-size: 2.5rem; margin-bottom: 1rem;">Resume</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: #ccc;">
+      Download my resume to know more about my academic background, technical skills, and project experience.
+    </p>
+    <div style="text-align: center;">
+      <a href="Shafiya shaik.pdf" download class="btn">Download Resume</a>
+    </div>
+  </section>
+  <!-- Certificates or Badges Section -->
+<section id="certificates" style="background-color: #f4f4f4; padding: 4rem 2rem;">
+    <h2 style="text-align: center; color: #00d4ff; font-size: 2.5rem; margin-bottom: 1rem;">Certificates & Badges</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: #555;">
+      Here are some of the certificates and badges I have earned that demonstrate my skills and achievements.
+    </p>
+    
+    <!-- Certificates Grid -->
+    <div class="certificates-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2rem; justify-items: center;">
+      <!-- Certificate 1 -->
+      <div class="certificate-card" style="background-color: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 100%; max-width: 250px; text-align: center;">
+        <img src="shafiya vertilearn.pdf" alt="Certificate 1" style="width: 100%; border-radius: 10px; height: 150px; object-fit: cover;">
+        <h3 style="color: #333; font-size: 1.25rem; margin-top: 1rem;">Certificate Title</h3>
+        <a href="shafiya cert3.png" target="_blank" class="btn" style="margin-top: 1rem; display: inline-block; padding: 8px 16px; background-color: #00d4ff; color: white; text-decoration: none; border-radius: 5px;">View Certificate</a>
+      </div>
+  
+      <!-- Certificate 2 -->
+      <div class="certificate-card" style="background-color: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 100%; max-width: 250px; text-align: center;">
+        <img src="path_to_certificate_image_2.jpg" alt="Certificate 2" style="width: 100%; border-radius: 10px; height: 150px; object-fit: cover;">
+        <h3 style="color: #333; font-size: 1.25rem; margin-top: 1rem;">Certificate Title</h3>
+        <a href="shafiya cert2.jpg" target="_blank" class="btn" style="margin-top: 1rem; display: inline-block; padding: 8px 16px; background-color: #00d4ff; color: white; text-decoration: none; border-radius: 5px;">View Certificate</a>
+      </div>
+      
+      <!-- Certificate 3 -->
+      <div class="certificate-card" style="background-color: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 100%; max-width: 250px; text-align: center;">
+        <img src="path_to_certificate_image_2.jpg" alt="Certificate 2" style="width: 100%; border-radius: 10px; height: 150px; object-fit: cover;">
+        <h3 style="color: #333; font-size: 1.25rem; margin-top: 1rem;">Certificate Title</h3>
+        <a href="Screenshot 2025-05-09 101040.png" target="_blank" class="btn" style="margin-top: 1rem; display: inline-block; padding: 8px 16px; background-color: #00d4ff; color: white; text-decoration: none; border-radius: 5px;">View Certificate</a>
+      </div>
+  
+      <!-- Add more certificates here -->
+    </div>
+  </section>
+  
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Feel free to reach out for collaborations, project discussions, or just to say hello!</p>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+  
+
+  <script>
+    // Smooth scroll effect
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({
+            behavior: "smooth"
+          });
+        }
+      });
+    });
+  </script>
+  <script>
+// Create the Dark/Light Mode Toggle Button
+const modeToggle = document.createElement('button');
+modeToggle.classList.add('mode-toggle');
+modeToggle.textContent = '🌙'; // Initially set the button to dark mode
+document.body.appendChild(modeToggle);
+
+// Toggle dark and light mode when button is clicked
+modeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  
+  // Change the button text based on the mode
+  if (document.body.classList.contains('dark-mode')) {
+    modeToggle.textContent = '🌞'; // Switch to light mode
+  } else {
+    modeToggle.textContent = '🌙'; // Switch to dark mode
+  }
+});
+</script>
+</body>
+</html>
